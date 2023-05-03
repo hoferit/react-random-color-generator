@@ -21,12 +21,6 @@ const baseBoxStyles = css`
   box-shadow: 5px 5px 5px;
 `;
 
-// save animation conditional to variable to integrate easier into emotion css
-// outside of the element because of emotion best practices
-// const bounceCondition = css`
-//   animation: ${bounce} 12s linear infinite;
-// `;
-
 export default function App() {
   // set State variables for background color, text, and hue/brightness select fields
   const [bgColor, setBgColor] = useState('#ffffff');
@@ -37,8 +31,6 @@ export default function App() {
   const [hue, setHue] = useState('');
   // state variable for generating box
   const [size, setSize] = useState(400);
-  // state variable defining bouncing state
-  // const [isBouncing, setIsBouncing] = useState(false);
   // state variable to toggle classes
   const [classes, setClasses] = useState({ inner: '', outer: '' });
   // function to handle class button click
