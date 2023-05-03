@@ -1,3 +1,45 @@
 .App {
-  text-align: center;
+  background-color: #464646;
+  margin: 0;
+  padding: 40px;
+  height: calc(100vh - 100px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+.x {
+  animation: x 5s linear infinite alternate;
+}
+
+.y {
+  animation: y 2s linear infinite alternate;
+}
+
+@keyframes x {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes y {
+  100% {
+    transform: translateY(100%);
+  }
+}
+.App > div > p {
+  font-size: 25px;
+}
+.App > div > button {
+  width: 150px;
+  height: 80px;
+  font-size: 25px;
+  border-radius: 10px;
 }
