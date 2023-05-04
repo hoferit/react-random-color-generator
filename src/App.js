@@ -9,8 +9,8 @@ const baseBoxStyles = css`
   background-color: #9e9e9e;
   padding: 60px 20px;
   border-radius: 10px;
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   font-size: 18px;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@ export default function App() {
   const [brightness, setBrightness] = useState('random');
   const [hue, setHue] = useState('');
   // state variable for generating box
-  const [size, setSize] = useState(400);
+  const [size, setSize] = useState(200);
   // state variable to toggle classes
   const [classes, setClasses] = useState({ inner: '', outer: '' });
   // function to handle class button click
@@ -61,7 +61,7 @@ export default function App() {
             background-color: #464646;
             margin: 0;
             padding: 40px;
-            height: calc(100vh - 100px);
+            min-height: 100vh;
             width: 100%;
             display: flex;
             align-items: center;
@@ -73,6 +73,21 @@ export default function App() {
             margin: 0;
           }
 
+          .settingsbox {
+            background-color: #9e9e9e;
+            padding: 60px 20px;
+            margin-top: 8px;
+            border-radius: 10px;
+            width: 200px;
+            height: 150px;
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 5px 5px 5px;
+          }
           .x {
             animation: x 5s linear infinite alternate;
           }
@@ -83,23 +98,17 @@ export default function App() {
 
           @keyframes x {
             100% {
-              transform: translateX(100%);
+              transform: translateX(80vw);
             }
           }
 
           @keyframes y {
             100% {
-              transform: translateY(100%);
+              transform: translateY(80vh);
             }
           }
           .App > div > p {
             font-size: 25px;
-          }
-          .App > div > button {
-            width: 150px;
-            height: 80px;
-            font-size: 25px;
-            border-radius: 10px;
           }
         `}
       />
@@ -114,38 +123,38 @@ export default function App() {
               height: ${size}px;
             `}
           >
-            <button onClick={changeColor}>Generate</button>
-            <br />
             {text}
-            <br />
-            Hue:
-            <select value={hue} onChange={(e) => setHue(e.target.value)}>
-              <option value="">None</option>
-              <option value="red">Red</option>
-              <option value="orange">Orange</option>
-              <option value="yellow">Yellow</option>
-              <option value="green">Green</option>
-              <option value="blue">Blue</option>
-              <option value="purple">Purple</option>
-              <option value="pink">Pink</option>
-              <option value="monochrome">Monochrome</option>
-            </select>
-            <br />
-            Brightness:
-            <select
-              value={brightness}
-              onChange={(e) => setBrightness(e.target.value)}
-            >
-              <option value="random">Random</option>
-              <option value="bright">Bright</option>
-              <option value="dark">Dark</option>
-            </select>
-            <br />
-            Box Size
-            <input type="number" value={size} onChange={handleChange} />
-            <br />
-            <button onClick={handleClick}>Bounce!</button>
           </div>
+        </div>
+        <div className="settingsbox">
+          <button onClick={changeColor}>Generate</button>
+          Hue:
+          <select value={hue} onChange={(e) => setHue(e.target.value)}>
+            <option value="">None</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="pink">Pink</option>
+            <option value="monochrome">Monochrome</option>
+          </select>
+          <br />
+          Brightness:
+          <select
+            value={brightness}
+            onChange={(e) => setBrightness(e.target.value)}
+          >
+            <option value="random">Random</option>
+            <option value="bright">Bright</option>
+            <option value="dark">Dark</option>
+          </select>
+          <br />
+          Box Size
+          <input type="number" value={size} onChange={handleChange} />
+          <br />
+          <button onClick={handleClick}>Bounce!</button>
         </div>
       </div>
     </>
