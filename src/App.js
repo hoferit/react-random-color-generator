@@ -1,6 +1,5 @@
-import './App.css';
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import { css, Global } from '@emotion/react';
 import randomColor from 'randomcolor';
 import { useState } from 'react';
 
@@ -55,49 +54,100 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <div className={classes.outer}>
-        <div // combine the base css settings with dynamic variables inside the JSX with emotion
-          className={classes.inner}
-          css={css`
-            ${baseBoxStyles};
-            background-color: ${bgColor};
-            width: ${size}px;
-            height: ${size}px;
-          `}
-        >
-          <button onClick={changeColor}>Generate</button>
-          <br />
-          <p>{text}</p>
-          Hue:
-          <select value={hue} onChange={(e) => setHue(e.target.value)}>
-            <option value="">None</option>
-            <option value="red">Red</option>
-            <option value="orange">Orange</option>
-            <option value="yellow">Yellow</option>
-            <option value="green">Green</option>
-            <option value="blue">Blue</option>
-            <option value="purple">Purple</option>
-            <option value="pink">Pink</option>
-            <option value="monochrome">Monochrome</option>
-          </select>
-          <br />
-          Brightness:
-          <select
-            value={brightness}
-            onChange={(e) => setBrightness(e.target.value)}
+    <>
+      <Global
+        styles={css`
+          .App {
+            background-color: #464646;
+            margin: 0;
+            padding: 40px;
+            height: calc(100vh - 100px);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+          }
+
+          body {
+            margin: 0;
+          }
+
+          .x {
+            animation: x 5s linear infinite alternate;
+          }
+
+          .y {
+            animation: y 2s linear infinite alternate;
+          }
+
+          @keyframes x {
+            100% {
+              transform: translateX(100%);
+            }
+          }
+
+          @keyframes y {
+            100% {
+              transform: translateY(100%);
+            }
+          }
+          .App > div > p {
+            font-size: 25px;
+          }
+          .App > div > button {
+            width: 150px;
+            height: 80px;
+            font-size: 25px;
+            border-radius: 10px;
+          }
+        `}
+      />
+      <div className="App">
+        <div className={classes.outer}>
+          <div // combine the base css settings with dynamic variables inside the JSX with emotion
+            className={classes.inner}
+            css={css`
+              ${baseBoxStyles};
+              background-color: ${bgColor};
+              width: ${size}px;
+              height: ${size}px;
+            `}
           >
-            <option value="random">Random</option>
-            <option value="bright">Bright</option>
-            <option value="dark">Dark</option>
-          </select>
-          <br />
-          Box Size
-          <input type="number" value={size} onChange={handleChange} />
-          <br />
-          <button onClick={handleClick}>Bounce!</button>
+            <button onClick={changeColor}>Generate</button>
+            <br />
+            {text}
+            <br />
+            Hue:
+            <select value={hue} onChange={(e) => setHue(e.target.value)}>
+              <option value="">None</option>
+              <option value="red">Red</option>
+              <option value="orange">Orange</option>
+              <option value="yellow">Yellow</option>
+              <option value="green">Green</option>
+              <option value="blue">Blue</option>
+              <option value="purple">Purple</option>
+              <option value="pink">Pink</option>
+              <option value="monochrome">Monochrome</option>
+            </select>
+            <br />
+            Brightness:
+            <select
+              value={brightness}
+              onChange={(e) => setBrightness(e.target.value)}
+            >
+              <option value="random">Random</option>
+              <option value="bright">Bright</option>
+              <option value="dark">Dark</option>
+            </select>
+            <br />
+            Box Size
+            <input type="number" value={size} onChange={handleChange} />
+            <br />
+            <button onClick={handleClick}>Bounce!</button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
