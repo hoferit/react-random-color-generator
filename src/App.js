@@ -50,7 +50,7 @@ export default function App() {
       luminosity: brightness,
     });
     setBgColor(newColor);
-    setText(`Generated Color: <${newColor}>`);
+    setText(`Generated Color: ${newColor}`);
   };
 
   return (
